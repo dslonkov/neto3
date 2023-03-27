@@ -6,17 +6,31 @@ const ToDoList = () => {
   const [todos, setTodos] = useState([])
 
   function addItem (name, dist) {
-    setTodos(todos.concat([
-      {
-        name,
-        dist
-      }
-    ]))
+
+  const sortArr = todos.filter(item => item.name === name);
+
+    if (sortArr) {
+      setTodos(todos.concat([
+        {
+          ...todos,
+          dist: dist + todos.dist
+        }
+      ]))
+    } else {
+      setTodos(todos.concat([
+        {
+          name,
+          dist
+        }
+      ]))
+    }
+
   }
 
   function removeItem(name) {
     setTodos(todos.filter(item => item.name !== name))
   }
+
 
  return (
    <div className='container'>

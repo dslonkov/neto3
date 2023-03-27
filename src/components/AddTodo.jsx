@@ -22,10 +22,10 @@ const AddTodo = ({ onCreate }) => {
         <label className='label' htmlFor="date">Дата</label>
         <input
           className='input'
+          type='date'
           id='date'
           value={value1}
           onChange={event => setValue1(event.target.value)}
-          type="text"
         />
       </div>
 
@@ -33,10 +33,10 @@ const AddTodo = ({ onCreate }) => {
         <label className='label' htmlFor="dist">Пройдено км</label>
         <input
           className='input'
+          type='number'
           id='dist'
           value={value2}
           onChange={event => setValue2(event.target.value)}
-          type="text"
         />
       </div>
       <button className='btn' type='submit'>OK</button>
