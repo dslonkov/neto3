@@ -7,24 +7,20 @@ const ToDoList = () => {
 
   function addItem (name, dist) {
 
-  const sortArr = todos.filter(item => item.name === name);
+  const findItem = todos.find((item) => item.name === name);
+  const filteredSteps = todos.filter((item) => item.name !== name);
 
-    if (sortArr) {
-      setTodos(todos.concat([
-        {
-          ...todos,
-          dist: dist + todos.dist
-        }
-      ]))
-    } else {
-      setTodos(todos.concat([
-        {
-          name,
-          dist
-        }
-      ]))
-    }
-
+  if (findItem) {
+    setTodos([
+      ...filteredSteps,
+      {
+        name: findItem.name,
+        dist: +dist + +findItem.dist,
+      },
+    ]);
+  } else {
+    setTodos((prevState) => [...prevState, { name, dist }])
+  }
   }
 
   function removeItem(name) {
